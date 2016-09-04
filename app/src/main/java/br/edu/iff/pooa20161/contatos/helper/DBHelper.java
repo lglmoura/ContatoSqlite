@@ -14,12 +14,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "contatosDB";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_NAME = "contatos";
-    private static final String ID ="_id";
-    private static final String NOME = "nome";
-    private static final String EMAIL = "email";
-    private static final String TELEFONE = "telefone";
-    private static final String FOTO = "foto";
+    public static final String TABLE_NAME = "contatos";
+    public static final String ID ="_id";
+    public static final String NOME = "nome";
+    public static final String EMAIL = "email";
+    public static final String TELEFONE = "telefone";
+    public static final String FOTO = "foto";
     private static final String DATABASE_CREATE = "create table "+TABLE_NAME+
             "(" + ID+"  integer primary key autoincrement, "+
             NOME +" text not null, " + EMAIL + " text not null, " + TELEFONE + " text not null, "+
