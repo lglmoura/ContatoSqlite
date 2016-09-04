@@ -84,8 +84,20 @@ public class DBAdapter {
 
 
         return contatos;
-
-
     }
+
+    public Contato getContato(int idContato){
+
+        Cursor cursor = database.query(DBHelper.TABLE_NAME,
+                        allColumns, DBHelper.ID +" = " + idContato,
+                        null,null,
+                        null,
+                        null);
+
+        cursor.moveToFirst();
+
+        return   cursorToContato(cursor);
+    }
+
 
 }
