@@ -12,6 +12,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.iff.pooa20161.contatos.helper.DBHelper;
 import br.edu.iff.pooa20161.contatos.models.Contato;
@@ -61,7 +63,29 @@ public class DBAdapter {
 
     }
 
+    public List<Contato> getContatos()
+    {
+        Cursor cursor = database.rawQuery("select * from contatos", null);
+        ArrayList<Contato> contatos = new ArrayList<Contato>();
+        cursor.moveToFirst();
+        while(!cursor.moveToNext())
+        {
+            byte[] blob = cursor.getBlob(cursor.getColumnIndex(DBHelper.FOTO));
+            Bitmap bmp = BitmapFactory.decodeByteArray(blob, 0, blob.length);
+            Contato atual = new Contato(cursor.getLong(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    bmp);
+            contatos.add(atual);
 
 
+        }
+
+
+        return contatos;
+
+
+    }
 
 }
