@@ -9,6 +9,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import java.io.ByteArrayOutputStream;
 
@@ -46,6 +47,20 @@ public class DBAdapter {
         return cursorToContato(cursor);
 
     }
+
+    private Contato cursorToContato(Cursor cursor)
+    {
+
+        byte[] blob = cursor.getBlob(cursor.getColumnIndex(DBHelper.FOTO));
+        Bitmap bmp = BitmapFactory.decodeByteArray(blob, 0, blob.length);
+        Contato contato = new Contato(cursor.getLong(0),cursor.getString(1),  cursor.getString(2),
+                        cursor.getString(3), bmp);
+
+        return   contato;
+
+
+    }
+
 
 
 
