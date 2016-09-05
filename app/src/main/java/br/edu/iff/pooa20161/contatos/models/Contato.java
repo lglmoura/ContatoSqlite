@@ -10,7 +10,7 @@ public class Contato {
     private String nome;
     private String email;
     private String telefone;
-    private Bitmap foto;
+
 
     public Contato() {
 
@@ -24,12 +24,12 @@ public class Contato {
         this.id = id;
     }
 
-    public Contato(long id, String nome, String email, String telefone, Bitmap foto) {
+    public Contato(long id, String nome, String email, String telefone) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
-        this.foto = foto;
+
     }
 
     public String getNome() {
@@ -56,11 +56,5 @@ public class Contato {
         this.telefone = telefone;
     }
 
-    public Bitmap getFoto() {
-        return foto;
-    }
 
-    public void setFoto(Bitmap foto) {
-        this.foto = foto;
-    }
 }
